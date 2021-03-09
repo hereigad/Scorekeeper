@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Scorekeeper</string>
+    <string name="plus_button_descriptor">Plus Button</string>
+    <string name="minus_button_descriptor">Minus Button</string>
+</resources>
