@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    static final String STATE_SCORE_1 = "Team 1 Score";
+    static final String STATE_SCORE_2 = "Team 2 Score";
+
     private int mScore1;
     private int mScore2;
     private TextView mScoreText1;
@@ -23,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mScoreText1 = (TextView) findViewById(R.id.score_1);
         mScoreText2 = (TextView) findViewById(R.id.score_2);
+        mScore1 = savedInstanceState.getInt(STATE_SCORE_1);
+        mScore2 = savedInstanceState.getInt(STATE_SCORE_2);
+        mScoreText1.setText(String.valueOf(mScore1));
+        mScoreText2.setText(String.valueOf(mScore2));
     }
 
     public void decreaseScore(View view) {
@@ -35,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
                 mScore2--;
                 mScoreText2.setText(String.valueOf(mScore2));
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putInt(STATE_SCORE_1, mScore1);
+        outState.putInt(STATE_SCORE_2, mScore2);
+        super.onSaveInstanceState(outState);
     }
 
     @Override
